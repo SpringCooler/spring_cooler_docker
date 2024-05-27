@@ -1,18 +1,19 @@
 version: '3.8'
 
 services:
-  api-service:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  frontend:
+    working_dir: /src
+    image: hai0421/spring_cooler_front:latest
     ports:
-      - "8080:8080"
-#    depends_on:
-#      - db-service
-#
-#  db-service:
-#    build:
-#      context: .
-#      dockerfile: ../db/Dockerfile
-##    ports:
-##      - "5432:5432"
+      - 3000:3000
+    environment:
+      - HOST=0.0.0.0
+    depends_on:
+      - api-service
+    restart: always
+  api-service:
+    image: hai0421/spring_cooler:latest
+    ports:
+      - 8080:8080
+
+    

@@ -3,7 +3,6 @@
 FROM amazoncorretto:17.0.11
 
 CMD ["./gradlew", "clean", "build"]
-COPY db-0.0.1-SNAPSHOT-plain.jar .
 # JAR 파일을 이미지에 복사
 COPY api-0.0.1-SNAPSHOT.jar app.jar
 
