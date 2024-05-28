@@ -12,8 +12,6 @@ services:
       - api-service
     restart: always
   api-service:
-    image: hai0421/spring_cooler:latest
+    image: hai0421/spring_cooler_back:latest
     ports:
       - 8080:8080
-
-    
