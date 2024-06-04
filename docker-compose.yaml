@@ -10,8 +10,36 @@ services:
       - HOST=0.0.0.0
     depends_on:
       - api-service
+    networks:
+      - spring_cooler
+    container_name: frontend-1
     restart: always
+    
   api-service:
     image: hai0421/spring_cooler_back:latest
     ports:
       - 8080:8080
+    networks:
+      - spring_cooler
+    container_name: api-service-1
+  db:
+    image: mysql:8.1.0
+    restart: always
+    command:
+    - --lower_case_table_names=1
+    - --character-set-server=utf8mb4
+    - --collation-server=utf8mb4_unicode_ci
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=spring_cooler
+      - MYSQL_ROOT_PASSWORD=Tjrdl1651!
+      - TZ=Asia/Seoul
+    volumes:
+      - /Users/choeminseog/TEMP/MYSQL:/var/lib/mysql
+    networks:
+      - spring_cooler
+networks:
+  spring_cooler:
+    external: true
