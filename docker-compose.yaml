@@ -37,7 +37,8 @@ services:
       - MYSQL_ROOT_PASSWORD=Tjrdl1651!
       - TZ=Asia/Seoul
     volumes:
-      - /Users/choeminseog/TEMP/MYSQL:/var/lib/mysql
+      - ./db/mysql/data:/var/lib/mysql
+      - ./db/mysql/init:/docker-entrypoint-initdb.d
     networks:
       - spring_cooler
 networks:
