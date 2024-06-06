@@ -3,6 +3,7 @@ version: '3.8'
 services:
   frontend:
     working_dir: /src
+    platform: linux/amd64
     image: hai0421/spring_cooler_front:latest
     ports:
       - 3000:3000
@@ -16,6 +17,7 @@ services:
     restart: always
     
   api-service:
+    platform: linux/amd64
     image: hai0421/spring_cooler_back:latest
     ports:
       - 8080:8080
@@ -23,6 +25,7 @@ services:
       - spring_cooler
     container_name: api-service-1
   db:
+    platform: linux/amd64
     image: mysql:8.1.0
     restart: always
     command:
